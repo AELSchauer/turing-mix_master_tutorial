@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature 'User submits a new artist...' do
+RSpec.feature 'User creates a new artist...' do
   let(:artist_name) { 'Bob Marley' }
   let(:artist_image_path) { 'http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg?partner=allrovi.com' }
 
-  scenario 'they enter data to create a new artist' do
+  scenario 'they enter data into the "Create Artist" form and submit' do
     visit '/artists'
     click_on 'Create Artist'
     fill_in 'artist_name', with: artist_name

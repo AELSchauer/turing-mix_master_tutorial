@@ -1,7 +1,5 @@
-class Artist < ApplicationRecord
-  validates :name, :image_path, presence: true
-  validates :name,              uniqueness: true
-  has_many  :songs
+class Song < ApplicationRecord
+  belongs_to :artist
 
   EXCEPT_FIELDS = ["id", "created_at", "updated_at"]
 
@@ -16,5 +14,4 @@ class Artist < ApplicationRecord
   def self.input_fields
     column_names.find_all { |column| EXCEPT_FIELDS.include?(column) == false }
   end
-
 end

@@ -1,16 +1,26 @@
 <h1><%= @artist.name %></h1>
 <table>
-  <tr>
+<tr>
     <td>
-      <%= button_to "Edit", edit_artist_path(@artist), method: :get %>
+      <%= button_to 'Edit', edit_artist_path(@artist), method: :get, class: 'button' %>
     </td>
     <td>
-      <%= button_to "Delete", artist_path(@artist), method: :delete %>
+      <%= button_to 'Delete', artist_path(@artist), method: :delete, class: 'danger' %>
+    </td>
+    <td>
+      <%= button_to 'New Song', new_artist_song_path(@artist), method: :get, class: 'button' %>
     </td>
   </tr>
 </table>
 <br>
-<img src="<%= @artist.image_path %>">
+<img src='<%= @artist.image_path %>'>
 <br>
 <br>
-<%= button_to "Return to Artist List", artists_path, method: :get %>
+<h2>Songs</h2>
+<ul>
+<% @artist.songs.each do |song| %>
+  <li><%= link_to song.title, song_path(song) %></li>
+<% end %>
+</ul>
+<%= button_to 'Return to Artist List', artists_path, method: :get, class: 'button' %>
+

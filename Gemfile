@@ -50,6 +50,9 @@ group :development, :test do
   gem 'launchy'
   # Use 'shoulda-matchers' to automate simple tests
   gem 'shoulda-matchers'
+
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do

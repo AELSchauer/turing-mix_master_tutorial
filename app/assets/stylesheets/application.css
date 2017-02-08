@@ -21,3 +21,12 @@
 .form_table th {
   text-align: left;
 }
+
+.danger {
+  background-color: #DA5550;
+}
+
+.button {
+  background-color: white;
+  display: inline;
+}
