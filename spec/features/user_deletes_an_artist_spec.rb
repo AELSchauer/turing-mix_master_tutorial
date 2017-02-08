@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User visits the artists index page...' do
+RSpec.feature 'User deletes an artist...' do
   def artists_hash
     {
       bob_marley: { name: 'Bob Marley', image_path: 'http://cps-static.rovicorp.com/3/JPG_400/MI0003/146/MI0003146038.jpg?partner=allrovi.com' },
@@ -9,13 +9,15 @@ RSpec.feature 'User visits the artists index page...' do
     }
   end
 
-  let!(:artists) { artists_hash.values.map { |params| Artist.find_or_create_by(params) } }
+  let(:adele) { artists_hash[:adele] }
 
-  scenario "they see the name of each artist with a link to their details page" do
-    visit artists_path
+  scenario "they click on the delete button" do
+    artists_hash.values.each { |params| Artist.create(params) }
+    visit artist_path(Artist.second)
 
-    artists.each do |artist|
-      expect(page).to have_link artist.name, href: artist_path(artist)
-    end
+    click_on 'Delete'
+
+    expect(page).to_not have_content adele[:name]
+    expect(page).to_not have_css("img[src=\"#{adele[:image_path]}\"]")
   end
 end

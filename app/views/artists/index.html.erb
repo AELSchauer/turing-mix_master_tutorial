@@ -1,6 +1,6 @@
 <h1>All Artists</h1>
 
-<%= link_to "Create Artist", new_artist_path %>
+<%= button_to "Create Artist", new_artist_path, method: :get %>
 
 <ul>
   <% @artists.each do |artist| %>
