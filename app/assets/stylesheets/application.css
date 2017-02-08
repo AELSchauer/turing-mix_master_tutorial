@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.error_notification {
+  color: red;
+}
+
+.form_table th {
+  text-align: left;
+}

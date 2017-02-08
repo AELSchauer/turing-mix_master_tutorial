@@ -1,0 +1,35 @@
+<%= form_for @artist do |f| %>
+  <% if @artist.errors.any? %>
+    <div class="error_notification">
+      <h2>
+        <%= pluralize(@artist.errors.count, "error") %> prohibited this record from being saved:
+      </h2>
+      <ul>
+        <% @artist.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <br />
+  <% end %>
+  <table class="form_table">
+    <tr>
+      <th>
+        <%= f.label :name %>
+      </th>
+      <td>
+        <%= f.text_field :name %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <%= f.label :image_path %>
+      </th>
+      <td>
+        <%= f.text_field :image_path %>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <%= f.submit "Submit" %>
+<% end %>

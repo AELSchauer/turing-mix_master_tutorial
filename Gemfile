@@ -35,11 +35,21 @@ gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  # Use Rails_12Factor to enable error logging in Heroku
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  # Use RSpec for building tests
+  # Use 'rspec' & 'capybara' for building tests
   gem 'rspec-rails'
+  gem 'capybara'
+  # Use 'launchy' for page debugging
+  gem 'launchy'
+  # Use 'shoulda-matchers' to automate simple tests
+  gem 'shoulda-matchers'
 end
 
 group :development do
