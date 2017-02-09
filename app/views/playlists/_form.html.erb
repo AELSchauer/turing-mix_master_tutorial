@@ -1,0 +1,40 @@
+<%= form_for @playlist do |f| %>
+  <% if @playlist.errors.any? %>
+    <div class="error_notification">
+      <h2>
+        <%= pluralize(@playlist.errors.count, "error") %> prohibited this record from being saved:
+      </h2>
+      <ul>
+        <% @playlist.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <br />
+  <% end %>
+  <table class="form_table">
+    <tr>
+      <th>
+        <%= f.label :name %>
+      </th>
+      <td>
+        <%= f.text_field :name %>
+      </td>
+    </tr>
+  </table>
+  <h4>Available Songs</h4>
+  <% @songs.each do |song| %>
+    <div>
+    <% if @song_ids.include?(song.id) %>
+      <%= check_box_tag :song_ids, song.id, true, name: 'playlist[song_ids][]', id: "song-#{song.id}" %>
+      <%= song.title %> by <%= song.artist.name %>
+    <% else %>
+      <%= check_box_tag :song_ids, song.id, false, name: 'playlist[song_ids][]', id: "song-#{song.id}" %>
+      <%= song.title %> by <%= song.artist.name %>
+    <% end %>
+    </div>
+  <% end %>
+  <br />
+  <br />
+  <%= f.submit "Submit", class: 'button'%>
+<% end %>

@@ -1,11 +1,8 @@
-class Song < ApplicationRecord
-  validates :title, presence: true
-  validates :title, uniqueness: { scope: :artist_id }
-
-  belongs_to :artist
+class Playlist < ApplicationRecord
+  validates :name, presence: true
+  validates :name, uniqueness: true
   has_many :playlist_songs
-  has_many :playlists, through: :playlist_songs
-
+  has_many :songs, through: :playlist_songs
 
   EXCEPT_FIELDS = ["id", "created_at", "updated_at"]
 
@@ -20,5 +17,4 @@ class Song < ApplicationRecord
   def self.input_fields
     column_names.find_all { |column| EXCEPT_FIELDS.include?(column) == false }
   end
-
 end

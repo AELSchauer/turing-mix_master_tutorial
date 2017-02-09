@@ -1,6 +1,6 @@
 <h1><%= @artist.name %></h1>
 <table>
-<tr>
+  <tr>
     <td>
       <%= button_to 'Edit', edit_artist_path(@artist), method: :get, class: 'button' %>
     </td>
@@ -8,7 +8,7 @@
       <%= button_to 'Delete', artist_path(@artist), method: :delete, class: 'danger' %>
     </td>
     <td>
-      <%= button_to 'New Song', new_artist_song_path(@artist), method: :get, class: 'button' %>
+      <%= button_to 'Create New Song', new_artist_song_path(@artist), method: :get, class: 'button' %>
     </td>
   </tr>
 </table>

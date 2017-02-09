@@ -1,0 +1,11 @@
+<h1>All Playlists</h1>
+
+<%= button_to "Create Playlist", new_playlist_path, method: :get, class: 'button'%>
+
+<ul>
+  <% @playlists.each do |playlist| %>
+  <li>
+    <%= link_to playlist.name, playlist_path(playlist) %>
+  </li>
+  <% end %>
+</ul>

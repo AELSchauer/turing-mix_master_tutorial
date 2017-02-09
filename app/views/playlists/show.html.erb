@@ -1,0 +1,17 @@
+<h1><%= @playlist.name %></h1>
+<table>
+  <tr>
+    <td>
+      <%= button_to 'Edit', edit_playlist_path(@playlist), method: :get, class: 'button' %>
+    </td>
+    <td>
+      <%= button_to 'Delete', playlist_path(@playlist), method: :delete, class: 'danger' %>
+    </td>
+  </tr>
+</table>
+<ul>
+  <% @playlist.songs.order(:title).each do |song| %>
+    <li><%= link_to "#{song.title} by #{song.artist.name}", song_path(song) %></li>
+  <% end %>
+</ul>
+<%= button_to 'Return to Playlist List', playlists_path, method: :get, class: 'button' %>
