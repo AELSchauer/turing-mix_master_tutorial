@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :song do
-    title "MyString"
-    artist nil
+    artist
+    sequence(:title) { |n| "Jamming #{n}"}
   end
 end

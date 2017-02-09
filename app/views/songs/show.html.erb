@@ -1,3 +1,12 @@
-<h1><%= @song.title %></h1>
-
-<%= link_to @song.artist.name, artist_path(@song.artist) %>
+<!-- <h1><%= @song.title %></h1>
+<p> By <%= link_to @artist.name, artist_path(@artist) %> </p>
+<table>
+<tr>
+    <td>
+      <%= button_to 'Edit', edit_artist_song_path(@song), method: :get, class: 'button' %>
+    </td>
+    <td>
+      <%= button_to 'Delete', artist_song_path(@song), method: :delete, class: 'danger' %>
+    </td>
+  </tr>
+</table> -->

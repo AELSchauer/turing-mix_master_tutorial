@@ -1,0 +1,6 @@
+<h1>Edit Song</h1>
+<p>Update a song by <%= @song.artist.name %></p>
+
+<%= render partial: 'form' %>
+
+<%= button_to "Cancel", artist_song_path(@song), method: :get, class: 'button' %>

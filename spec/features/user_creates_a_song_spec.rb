@@ -6,7 +6,7 @@ RSpec.feature 'User creates a new song...' do
   let(:artist) { Artist.create(name: artist_name, image_path: artist_image_path)}
   let(:song_title) { 'No Woman No Cry' }
 
-  scenario 'they enter data into the "Create Song" form and submit' do
+  scenario 'they enter data into the "New Song" form and submit' do
     visit artist_path(artist)
     click_on 'Create Song'
     fill_in 'song_title', with: song_title
@@ -25,7 +25,7 @@ RSpec.feature 'User creates a new song...' do
     end
 
     scenario 'because they entered in an song title that already exits, and so they see an error message' do
-      Song.create(title: song_title)
+      artist.songs.create(title: song_title)
 
       visit artist_path(artist)
       click_on 'Create Song'

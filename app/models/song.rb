@@ -1,5 +1,8 @@
 class Song < ApplicationRecord
+  validates :title, presence: true
+  validates_uniqueness_of :title, scope: :artist_id
   belongs_to :artist
+
 
   EXCEPT_FIELDS = ["id", "created_at", "updated_at"]
 
